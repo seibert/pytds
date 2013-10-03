@@ -3411,7 +3411,7 @@ class _TdsSession(object):
         cols = self.res_info.columns
         row = tuple(self.row)
         if as_dict:
-            row = dict((col.column_name, col.value) for col in cols if col.column_name)
+            row = dict((col.column_name, value) for col, value in zip(cols, row) if col.column_name)
         return row
 
     def next_row(self):
